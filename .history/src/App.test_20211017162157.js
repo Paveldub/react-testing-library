@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import axios from 'axios'
-import App, { URL } from './App'
+import App from './App'
 const { render } = require("@testing-library/react")
 
 jest.mock('axios')
@@ -25,14 +25,6 @@ describe('App', () => {
     expect(items).toHaveLength(2)
     // additional
     expect(axios.get).toHaveBeenCalledTimes(1)
-    expect(axios.get).toHaveBeenCalledWith(`${URL}?query=React`)
-  })
-
-  it('fetches news from an API and reject', async () => {
-    axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
-    const {getByRole, findByText} = render(<App />)
-    userEvent.click(getByRole('button'))
-    const message = await findByText(/Something went wrong/i)
-    expect(message).toBeInTheDocument()
+    expect(axios.get).toHaveBeenCalledWith()
   })
 })

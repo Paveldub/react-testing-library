@@ -29,7 +29,7 @@ const App = () => {
         ))}
       </ul>
   
-      {error && <span>Something went wrong ... </span>}
+      {error && <span>Somethin went wrong ... </span>}
     </div>
   );
 };

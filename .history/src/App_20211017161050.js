@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from "react";
 import "./App.css";
 
-export const URL = 'http://hn.algolia.com/api/v1/search'
+const URL = 'http://hn.algolia.com/api/v1/search'
 
 const App = () => {
   const [news, setNews] = useState([])
@@ -22,14 +22,14 @@ const App = () => {
       <button onClick={handleFetch}>Fetch News</button>
       
       <ul>
-        {news?.map(({objectID, url, title}) => (
-          <li key={objectID}>
+        {news?.map(({ObjectId, url, title}) => (
+          <li key={ObjectId}>
             <a href={url}>{title}</a>
           </li>
         ))}
       </ul>
   
-      {error && <span>Something went wrong ... </span>}
+      {error && <span>Somethin went wrong ... </span>}
     </div>
   );
 };

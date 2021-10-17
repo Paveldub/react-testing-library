@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from "react";
 import "./App.css";
 
-export const URL = 'http://hn.algolia.com/api/v1/search'
+const URL = 'http://hn.algolia.com/api/v1/search'
 
 const App = () => {
   const [news, setNews] = useState([])
@@ -29,7 +29,7 @@ const App = () => {
         ))}
       </ul>
   
-      {error && <span>Something went wrong ... </span>}
+      {error && <span>Somethin went wrong ... </span>}
     </div>
   );
 };

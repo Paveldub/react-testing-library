@@ -28,11 +28,14 @@ describe('App', () => {
     expect(axios.get).toHaveBeenCalledWith(`${URL}?query=React`)
   })
 
-  it('fetches news from an API and reject', async () => {
-    axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
-    const {getByRole, findByText} = render(<App />)
+  it('fetches news from an API', async () => {
+    axios.get.mockImplementationOnce(() => Promise.resolve({data: {hits}}))
+    const {getByRole, findAllByRole} = render(<App />)
     userEvent.click(getByRole('button'))
-    const message = await findByText(/Something went wrong/i)
-    expect(message).toBeInTheDocument()
+    const items = await findAllByRole('listitem')
+    expect(items).toHaveLength(2)
+    // additional
+    expect(axios.get).toHaveBeenCalledTimes(1)
+    expect(axios.get).toHaveBeenCalledWith(`${URL}?query=React`)
   })
 })

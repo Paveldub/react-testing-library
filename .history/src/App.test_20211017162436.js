@@ -29,10 +29,10 @@ describe('App', () => {
   })
 
   it('fetches news from an API and reject', async () => {
-    axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
-    const {getByRole, findByText} = render(<App />)
+    axios.get.mockImplementationOnce(() => Promise.reject({data: {hits}}))
+    const {getByRole, findAllByRole} = render(<App />)
     userEvent.click(getByRole('button'))
-    const message = await findByText(/Something went wrong/i)
-    expect(message).toBeInTheDocument()
+    const items = await findAllByRole('listitem')
+    expect(items).toHaveLength(0)
   })
 })
