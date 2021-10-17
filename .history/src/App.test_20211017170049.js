@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { Modal } from './Modal';
-const {render}  = require("@testing-library/react")
+const { render } = require("@testing-library/react")
 
 describe('Portal', () => {
   it('modal shows children and a close button', () => {

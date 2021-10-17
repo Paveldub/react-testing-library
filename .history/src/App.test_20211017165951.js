@@ -1,6 +1,9 @@
-import userEvent from '@testing-library/user-event';
-import { Modal } from './Modal';
-const {render}  = require("@testing-library/react")
+import userEvent from '@testing-library/user-event'
+import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
+const { render } = require("@testing-library/react")
+
+
 
 describe('Portal', () => {
   it('modal shows children and a close button', () => {
